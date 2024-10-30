@@ -20,7 +20,7 @@ export class PageManager {
     return this.navigationPage;
   }
 
-  onFormLayoursPage() {
+  onFormLayoutsPage() {
     return this.formLayoutsPage;
   }
 
