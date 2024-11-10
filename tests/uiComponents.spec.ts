@@ -4,7 +4,7 @@ test.beforeEach(async ({ page }) => {
   await page.goto("/");
 });
 
-test.describe("Form Layouts page", () => {
+test.describe("Form Layouts page @block", () => {
   test.beforeEach(async ({ page }) => {
     await page.getByText("Forms").click();
     await page.getByText("Form layouts").click();
@@ -32,44 +32,45 @@ test.describe("Form Layouts page", () => {
     await expect(usingTheGridEmailInput).toHaveValue("test2@test.com");
   });
 
-  test("Radio buttons", async ({ page }) => {
+  test("Radio buttons @smoke", async ({ page }) => {
     const usingTheGridForm = page.locator("nb-card", {
       hasText: "Using the Grid",
     });
 
     // await usingTheGridForm.getByLabel("Option 1").check({ force: true });
     await usingTheGridForm
-      .getByRole("radio", { name: "Option 1" })
+      .getByRole("radio", { name: "Option 2" })
       .check({ force: true });
 
     const radioStatus = usingTheGridForm
       .getByRole("radio", { name: "Option 1" })
       .isChecked();
-    expect(radioStatus).toBeTruthy();
+    await expect(usingTheGridForm).toHaveScreenshot();
+    // expect(radioStatus).toBeTruthy();
 
-    await expect(
-      usingTheGridForm.getByRole("radio", { name: "Option 1" })
-    ).toBeChecked();
+    // await expect(
+    //   usingTheGridForm.getByRole("radio", { name: "Option 1" })
+    // ).toBeChecked();
 
-    await usingTheGridForm
-      .getByRole("radio", { name: "Option 2" })
-      .check({ force: true });
+    // await usingTheGridForm
+    //   .getByRole("radio", { name: "Option 2" })
+    //   .check({ force: true });
 
-    expect(
-      await usingTheGridForm
-        .getByRole("radio", { name: "Option 1" })
-        .isChecked()
-    ).toBeFalsy();
+    // expect(
+    //   await usingTheGridForm
+    //     .getByRole("radio", { name: "Option 1" })
+    //     .isChecked()
+    // ).toBeFalsy();
 
-    expect(
-      await usingTheGridForm
-        .getByRole("radio", { name: "Option 2" })
-        .isChecked()
-    ).toBeTruthy();
+    // expect(
+    //   await usingTheGridForm
+    //     .getByRole("radio", { name: "Option 2" })
+    //     .isChecked()
+    // ).toBeTruthy();
   });
 });
 
-test("Checkboxes", async ({ page }) => {
+test("Checkboxes @regression", async ({ page }) => {
   await page.getByText("Modal & Overlays").click();
   await page.getByText("Toastr").click();
 

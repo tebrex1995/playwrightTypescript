@@ -2,7 +2,8 @@
 /dist
 /tmp
 /out-tsc
-
+uiComponents.spec.ts-snapshots
+test-results
 # dependencies
 /node_modules
 
